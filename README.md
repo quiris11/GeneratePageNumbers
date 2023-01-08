@@ -4,10 +4,7 @@ GeneratePageNumbers [![Release](https://img.shields.io/github/release/quiris11/g
 Tool for generating page numbers for Kindle e-ink devices.
 
 ```
-usage: GeneratePageNumbers [-h] [-V] [-s] [--overwrite-pdoc-thumbs]
-                          [--overwrite-amzn-thumbs] [-o] [--skip-apnx] [-f]
-                          [-z] [-d [DAYS]] [-l] [--mark-real-pages] [-e]
-                          kindle_directory
+usage: GeneratePageNumbers [-h] [-V] [-s] [-o] [-d [DAYS]] [-l] [--mark-real-pages] kindle_directory
 
 positional arguments:
   kindle_directory      directory where is a Kindle Paperwhite mounted
@@ -18,13 +15,9 @@ optional arguments:
   -s, --silent          print less informations
   -o, --overwrite-apnx  overwrite APNX files
   -d [DAYS], --days [DAYS]
-                        only "younger" ebooks than specified DAYS will be
-                        processed (default: 7 days).
-  -l, --lubimy-czytac   download real pages from lubimyczytac.pl (time-
-                        consuming process!) (only with -d)
-  --mark-real-pages     mark computed pages as real pages (only with -l and
-                        -d)
-  -e, --eject           eject Kindle after completing process
+                        only "younger" ebooks than specified DAYS will be processed (default: 7 days).
+  -l, --lubimy-czytac   [DISABLED] download real pages from lubimyczytac.pl (time-consuming process!) (only with -d)
+  --mark-real-pages     mark computed pages as real pages (only with -l and -d)
 ```
 
 #### Additional requirements:
