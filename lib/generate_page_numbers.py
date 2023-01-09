@@ -206,9 +206,26 @@ def generate_page_numbers(is_silent, is_overwrite_apnx, kindlepath, days,
         print("FINISH of downloading real book page numbers...")
 
     print("START of updating CSV file…")
+    if days is not None:
+        dtt = datetime.today()
+        days_int = int(days)
+    else:
+        days_int = 0
+        diff = 0
     for root, dirs, files in os.walk(docs):
         for name in files:
-            if name.lower().endswith(('.azw3', '.mobi', '.azw')):
+            mobi_path = os.path.join(root, name)
+            if days is not None:
+                try:
+                    dt = os.path.getmtime(mobi_path)
+                except OSError:
+                    # raise
+                    continue
+                dt = datetime.fromtimestamp(dt).strftime('%Y-%m-%d')
+                dt = datetime.strptime(dt, '%Y-%m-%d')
+                diff = (dtt - dt).days
+            if name.lower().endswith(
+                    ('.azw3', '.mobi', '.azw')) and diff <= days_int:
                 dump_pages(asinlist, filelist, csv_pages, root, name, 
                            is_verbose)
     print("FINISH  of updating CSV file…")
